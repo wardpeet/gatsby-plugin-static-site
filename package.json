@@ -1,5 +1,5 @@
 {
-  "name": "gatsby-plugin-static-site",
+  "name": "@wardpeet/gatsby-plugin-static-site",
   "version": "0.0.1",
   "description": "A plugin that disables client side routing for gatsby",
   "main": "index.js",
