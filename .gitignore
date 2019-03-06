@@ -1,5 +1,5 @@
 /gatsby-node.js
 /gatsby-browser.js
 node_modules
-router
-index.js
+/router
+/index.js
