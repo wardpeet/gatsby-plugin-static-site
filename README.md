@@ -10,5 +10,5 @@ Disables client side routing for Gatsby.
 
 ```javascript
 // In your gatsby-config.js
-plugins: [`@wardpeet/gatsby-plugin-static-site`];
+plugins: [`@wardpeet/gatsby-plugin-static-site`]
 ```
