@@ -1,6 +1,10 @@
 
 // We override loadPage & loadPagesync to fix canonical redirects
 exports.onClientEntry = () => {
+  if (!window.___loader) {
+    return;
+  }
+
   if (window.pagePath !== location.pathname && window.pagePath !== location.pathname + '/') {
     const originalLoadPageSync = window.___loader.loadPageSync;
     const originalLoadPage = window.___loader.loadPage;
