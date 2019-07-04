@@ -11,7 +11,7 @@
   ],
   "license": "MIT",
   "peerDependencies": {
-    "gatsby": "^2.0.0",
+    "gatsby": "^2.11.1",
     "@reach/router": "^1.2.1"
   },
   "devDependencies": {
