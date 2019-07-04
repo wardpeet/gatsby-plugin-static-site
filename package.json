@@ -1,6 +1,6 @@
 {
   "name": "@wardpeet/gatsby-plugin-static-site",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "A plugin that disables client side routing for gatsby",
   "main": "index.js",
   "author": "Ward Peeters <ward@coding-tech.com>",
@@ -11,8 +11,8 @@
   ],
   "license": "MIT",
   "peerDependencies": {
-    "gatsby": "^2.11.1",
-    "@reach/router": "^1.2.1"
+    "@reach/router": "^1.2.1",
+    "gatsby": "^2.11.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.0.0",
