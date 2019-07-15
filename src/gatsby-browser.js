@@ -33,3 +33,7 @@ exports.onClientEntry = () => {
     }
   }
 }
+
+// we also need to disable prefetching as we don't know the exact page-data path.
+// TODO look at prefetch a whole html page on hover?
+exports.disableCorePrefetching = () => true
