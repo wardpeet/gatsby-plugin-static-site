@@ -1,5 +1,6 @@
 
 // We override loadPage & loadPagesync to fix canonical redirects
+// we also override hovering to disable hover prefetch
 exports.onClientEntry = () => {
   const loader = window.___loader;
 
@@ -32,6 +33,9 @@ exports.onClientEntry = () => {
       return originalLoadPage(path);
     }
   }
+
+  // disable hovering prefetching as we don't know if we can.
+  loader.hovering = () => { };
 }
 
 // we also need to disable prefetching as we don't know the exact page-data path.
