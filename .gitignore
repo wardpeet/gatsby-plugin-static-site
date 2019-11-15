@@ -3,3 +3,4 @@
 node_modules
 /router
 /index.js
+e2e-tests/plugins
