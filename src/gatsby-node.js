@@ -1,10 +1,8 @@
+const GatsbyStaticSitePlugin = require('./GatsbyStaticSitePlugin');
+
 exports.onCreateWebpackConfig = ({ actions }) => {
+  // add webpack plugin to gatsby's webpack config
   actions.setWebpackConfig({
-    resolve: {
-      alias: {
-        '@reach/router$': require.resolve(`./router`),
-        '@reach/router-original$': require.resolve(`@reach/router`),
-      },
-    },
+    plugins: [new GatsbyStaticSitePlugin()],
   });
 };
