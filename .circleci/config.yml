@@ -11,8 +11,6 @@ executors:
 
 aliases:
   e2e-executor: &e2e-executor
-    requires:
-      - build
     docker:
       - image: cypress/browsers:node10.16.0-chrome76
 
@@ -38,20 +36,37 @@ aliases:
     attach_workspace:
       at: ./
 
+workflows:
+  version: 2
+  build-test:
+    jobs:
+      - bootstrap
+      - lint
+        requires:
+          - bootstrap
+      - build
+        requires:
+          - bootstrap
+      - e2e_tests_asset_prefix
+        requires:
+          - build
 jobs:
+  bootstrap:
+    - checkout
+    - <<: *restore_cache
+    - <<: *install_node_modules
+    - <<: *persist_cache
+    - persist_to_workspace:
+        root: ./
+        paths:
+          - '*'
+    
   lint:
     executor: node
     working_directory: ~/project
 
     steps:
-      - checkout
-      - <<: *restore_cache
-      - <<: *install_node_modules
-      - <<: *persist_cache
-      - persist_to_workspace:
-          root: ./
-          paths:
-            - '*'
+      - <<: *attach_workspace_project
       # Build plugin
       - run: yarn build
 
@@ -60,10 +75,7 @@ jobs:
     working_directory: ~/project
 
     steps:
-      - checkout
-      - <<: *restore_cache
-      - <<: *install_node_modules
-      - <<: *persist_cache
+      - <<: *attach_workspace_project
       # Build plugin
       - run: yarn build
 
