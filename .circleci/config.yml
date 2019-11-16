@@ -52,14 +52,16 @@ workflows:
             - build
 jobs:
   bootstrap:
-    - checkout
-    - <<: *restore_cache
-    - <<: *install_node_modules
-    - <<: *persist_cache
-    - persist_to_workspace:
-        root: ./
-        paths:
-          - '*'
+    executor: node
+    steps:
+      - checkout
+      - <<: *restore_cache
+      - <<: *install_node_modules
+      - <<: *persist_cache
+      - persist_to_workspace:
+          root: ./
+          paths:
+            - '*'
 
   lint:
     executor: node
