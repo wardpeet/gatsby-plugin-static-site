@@ -14,13 +14,13 @@
 // ***********************************************************
 
 // Import commands.js using ES2015 syntax:
-import 'gatsby-cypress'
-import './commands'
+import 'gatsby-cypress';
+import './commands';
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
 beforeEach(() => {
-  cy.on("window:before:load", (win) => {
-    cy.spy(win.console, "log");
-  })
-})
+  cy.on('window:before:load', win => {
+    cy.spy(win.console, 'log');
+  });
+});

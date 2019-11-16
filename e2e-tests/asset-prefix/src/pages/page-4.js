@@ -1,9 +1,8 @@
-import React from "react"
-import { Link } from "gatsby"
+import React from 'react';
 
-import Layout from "../components/layout"
-import SEO from "../components/seo"
-import PageList from "../components/pageList"
+import Layout from '../components/layout';
+import SEO from '../components/seo';
+import PageList from '../components/pageList';
 
 const SecondPage = () => (
   <Layout>
@@ -12,6 +11,6 @@ const SecondPage = () => (
     <p>Welcome to page 4</p>
     <PageList hidePage={4} />
   </Layout>
-)
+);
 
-export default SecondPage
+export default SecondPage;
