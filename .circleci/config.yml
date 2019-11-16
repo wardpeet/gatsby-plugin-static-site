@@ -83,7 +83,9 @@ jobs:
 
   e2e_tests_asset_prefix:
     <<: *e2e-executor
+    working_directory: ~/project
     steps:
       - <<: *attach_workspace_project
-      - e2e-test:
-          test_path: e2e-tests/asset-prefix
+      - run: cd e2e-tests/asset-prefix
+      - run: yarn build
+      - run: yarn test
