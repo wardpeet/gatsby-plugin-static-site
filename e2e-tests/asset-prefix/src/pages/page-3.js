@@ -1,10 +1,9 @@
-import React from "react"
-import { Link } from "gatsby"
+import React from 'react';
 
-import Layout from "../components/layout"
-import Image from "../components/image"
-import SEO from "../components/seo"
-import PageList from "../components/pageList"
+import Layout from '../components/layout';
+import Image from '../components/image';
+import SEO from '../components/seo';
+import PageList from '../components/pageList';
 
 const IndexPage = () => (
   <Layout>
@@ -17,6 +16,6 @@ const IndexPage = () => (
     </div>
     <PageList hidePage={3} />
   </Layout>
-)
+);
 
-export default IndexPage
+export default IndexPage;

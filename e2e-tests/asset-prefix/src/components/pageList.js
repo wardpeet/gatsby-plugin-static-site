@@ -9,10 +9,20 @@ export default function PageList({ hidePage }) {
       continue;
     }
 
-    pages.push(<Link to={i === 1 ? '/' : `/page-${i}`}>Go back to {i === 1 ? 'the homepage' : `page ${i}`}</Link>)
+    pages.push(
+      <Link to={i === 1 ? '/' : `/page-${i}`}>
+        Go back to {i === 1 ? 'the homepage' : `page ${i}`}
+      </Link>
+    );
   }
 
-  return <ul style={{ fontSize: 'small' }} id="list-of-pages">
-    {pages.map(page => <li style={{ marginBottom: 0 }}>{page}</li>)}
-  </ul>;
+  return (
+    <ul style={{ fontSize: 'small' }} id="list-of-pages">
+      {pages.map((page, i) => (
+        <li style={{ marginBottom: 0 }} key={i}>
+          {page}
+        </li>
+      ))}
+    </ul>
+  );
 }

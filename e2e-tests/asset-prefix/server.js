@@ -4,7 +4,7 @@ const sirv = require('sirv');
 const PORT = process.env.PORT || 3000;
 
 const assets = sirv(`${__dirname}/public`, {
-  extensions: ['html', 'js', 'css', 'json', 'png', 'jpg']
+  extensions: ['html', 'js', 'css', 'json', 'png', 'jpg'],
 });
 
 const app = express();
@@ -21,7 +21,7 @@ app
   .use('/external', assets)
   .get('/', (req, res) => {
     res.writeHead(200, {
-      'Content-Type': 'text/html'
+      'Content-Type': 'text/html',
     });
     res.end(`
     <div data-page="1">page 1</div>
@@ -34,7 +34,7 @@ app
   })
   .get('/page-2', (req, res) => {
     res.writeHead(200, {
-      'Content-Type': 'text/html'
+      'Content-Type': 'text/html',
     });
     res.end(`
     <div data-page="2">page 2</div>

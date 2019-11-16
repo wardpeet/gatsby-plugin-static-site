@@ -22,7 +22,7 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
-      resolve: path.resolve('plugins/@wardpeet/gatsby-plugin-static-site')
+      resolve: path.resolve('plugins/@wardpeet/gatsby-plugin-static-site'),
     },
     // {
     //   resolve: `gatsby-plugin-manifest`,
@@ -40,4 +40,4 @@ module.exports = {
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
   ],
-}
+};
