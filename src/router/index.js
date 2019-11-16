@@ -1,4 +1,4 @@
-export * from "@reach/router-original";
+export * from '@reach/router-original';
 
 export const navigate = (url, options) => {
   // when we do not replace the current url or the replacement is just adding a slash we navigate

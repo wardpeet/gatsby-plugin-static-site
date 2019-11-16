@@ -1,0 +1,52 @@
+{
+  "name": "gatsby-starter-default",
+  "private": true,
+  "description": "A simple starter to get up and developing quickly with Gatsby",
+  "version": "0.1.0",
+  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "dependencies": {
+    "cypress": "^3.4.1",
+    "express": "^4.17.1",
+    "gatsby": "^2.15.21",
+    "gatsby-image": "^2.2.20",
+    "gatsby-plugin-manifest": "^2.2.18",
+    "gatsby-plugin-offline": "^3.0.8",
+    "gatsby-plugin-react-helmet": "^3.1.8",
+    "gatsby-plugin-sharp": "^2.2.25",
+    "gatsby-source-filesystem": "^2.1.26",
+    "gatsby-transformer-sharp": "^2.2.16",
+    "polka": "^0.5.2",
+    "prop-types": "^15.7.2",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "react-helmet": "^5.2.1",
+    "sirv": "^0.4.2"
+  },
+  "devDependencies": {
+    "cross-env": "^6.0.3",
+    "del-cli": "^3.0.0",
+    "gatsby-cypress": "^0.2.9",
+    "start-server-and-test": "^1.10.6"
+  },
+  "keywords": [
+    "gatsby"
+  ],
+  "license": "MIT",
+  "scripts": {
+    "prebuild": "del-cli plugins && node ../../scripts/copy-plugin.js",
+    "build": "cross-env CYPRESS_SUPPORT=y gatsby build --prefix-paths",
+    "develop": "gatsby develop",
+    "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
+    "start": "npm run develop",
+    "serve": "node server.js",
+    "test:cypress": "cypress run",
+    "test": "start-server-and-test serve http://localhost:3000 test:cypress"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
+  },
+  "bugs": {
+    "url": "https://github.com/gatsbyjs/gatsby/issues"
+  }
+}

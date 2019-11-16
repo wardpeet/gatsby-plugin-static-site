@@ -17,3 +17,5 @@ yarn.lock
 src
 examples
 .babelrc
+e2e-tests
+scripts
