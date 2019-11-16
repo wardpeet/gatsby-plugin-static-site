@@ -32,10 +32,6 @@ aliases:
       paths:
         - ~/.cache
 
-  attach_workspace_project: &attach_workspace_project
-    attach_workspace:
-      at: ./
-
 workflows:
   version: 2
   build-test:
@@ -68,7 +64,8 @@ jobs:
     working_directory: ~/project
 
     steps:
-      - <<: *attach_workspace_project
+      - attach_workspace:
+          at: ./
       # Build plugin
       - run: yarn build
 
@@ -83,9 +80,9 @@ jobs:
 
   e2e_tests_asset_prefix:
     <<: *e2e-executor
-    working_directory: ~/project
+    working_directory: ~/project/e2e-tests/asset-prefix
     steps:
-      - <<: *attach_workspace_project
-      - run: cd e2e-tests/asset-prefix
+      - attach_workspace:
+          at: ../
       - run: yarn build
       - run: yarn test
