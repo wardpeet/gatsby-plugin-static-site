@@ -70,6 +70,6 @@ jobs:
   e2e_tests_asset_prefix:
     <<: *e2e-executor
     steps:
-      <<: *attach_workspace_project
+      - <<: *attach_workspace_project
       - e2e-test:
           test_path: e2e-tests/asset-prefix
