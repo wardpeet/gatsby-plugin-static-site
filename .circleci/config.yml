@@ -38,6 +38,7 @@ aliases:
 
 jobs:
   build:
+    executor: node
     working_directory: ~/project
 
     steps:
