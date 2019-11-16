@@ -34,7 +34,7 @@ aliases:
       paths:
         - ~/.cache
 
-  attach_workspace: &attach_workspace
+  attach_workspace_project: &attach_workspace_project
     attach_workspace:
       at: ./
 
@@ -68,7 +68,7 @@ jobs:
       - run: yarn build
 
   e2e_tests_asset_prefix:
-    <<: *attach_workspace
+    <<: *attach_workspace_project
     <<: *e2e-executor
     steps:
       - e2e-test:
