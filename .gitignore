@@ -1,6 +1,6 @@
 /gatsby-node.js
 /gatsby-browser.js
-node_modules
 /router
 /index.js
-e2e-tests/plugins
+node_modules/**/*
+e2e-tests/**/*
