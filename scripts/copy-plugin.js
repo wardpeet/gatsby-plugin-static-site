@@ -1,30 +1,33 @@
 const path = require('path');
-const makeDir = require('make-dir');
-const cpy = require('cpy');
+const execa = require('execa');
+const del = require('del');
 const globby = require('globby');
-const packageJSON = require('../package.json');
 const rootDir = path.resolve(__dirname, '..');
-const pluginDir = path.join(
-  rootDir,
-  'e2e-tests',
-  'asset-prefix',
-  'plugins',
-  packageJSON.name
-);
+const e2eRoot = path.join(rootDir, 'e2e-tests', 'asset-prefix');
 
 (async () => {
-  await makeDir(pluginDir);
+  await execa('yarn', ['pack'], { cwd: rootDir });
 
-  const files = await globby('**/*', {
-    cwd: path.join(rootDir, 'src'),
-  });
+  const [localPackage] = await globby('*.tgz', { cwd: rootDir });
 
-  await cpy(['package.json'], pluginDir, {
-    cwd: rootDir,
-  });
+  const installPluginProc = execa(
+    'yarn',
+    ['add', `file:../../${localPackage}`],
+    {
+      cwd: e2eRoot,
+    }
+  );
+  installPluginProc.stdout.pipe(process.stdout);
+  await installPluginProc;
 
-  await cpy(files, pluginDir, {
-    cwd: path.join(rootDir, 'src'),
-    parents: true,
-  });
+  await del(localPackage, { cwd: rootDir });
+
+  // run checkout files
+  await Promise.all(
+    ['package.json', 'yarn.lock'].map(file => {
+      return execa('git', ['checkout', file], {
+        cwd: e2eRoot,
+      });
+    })
+  );
 })();

@@ -1,5 +1,3 @@
-const path = require('path');
-
 /**
  * @type {import('gatsby').GatsbyConfig}
  */
@@ -22,7 +20,7 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
-      resolve: path.resolve('plugins/@wardpeet/gatsby-plugin-static-site'),
+      resolve: `@wardpeet/gatsby-plugin-static-site`,
     },
     // {
     //   resolve: `gatsby-plugin-manifest`,
