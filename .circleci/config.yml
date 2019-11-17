@@ -47,7 +47,7 @@ workflows:
           requires:
             - build
 
-      - deploy_demo:
+      - netlify-deploy:
           requires:
             - e2e_tests_asset_prefix
           filters:
