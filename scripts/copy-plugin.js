@@ -22,12 +22,16 @@ const e2eRoot = path.join(rootDir, 'e2e-tests', 'asset-prefix');
 
   await del(localPackage, { cwd: rootDir });
 
-  // run checkout files
-  await Promise.all(
-    ['package.json', 'yarn.lock'].map(file => {
-      return execa('git', ['checkout', file], {
-        cwd: e2eRoot,
-      });
-    })
-  );
+  try {
+    // run checkout files
+    await Promise.all(
+      ['package.json', 'yarn.lock'].map(file => {
+        return execa('git', ['checkout', file], {
+          cwd: e2eRoot,
+        });
+      })
+    );
+  } catch (err) {
+    // noop
+  }
 })();
