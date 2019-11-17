@@ -1,0 +1,9 @@
+[[redirects]]
+  from = "/page-3"
+  to = "/external/page-3"
+  status = 200
+
+[[redirects]]
+  from = "/page-4"
+  to = "/external/page-4"
+  status = 200

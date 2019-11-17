@@ -46,6 +46,13 @@ workflows:
       - e2e_tests_asset_prefix:
           requires:
             - build
+
+      - deploy_demo:
+          requires:
+            - e2e_tests_asset_prefix
+          filters:
+            branches:
+              only: master
 jobs:
   bootstrap:
     executor: node
@@ -88,3 +95,18 @@ jobs:
       - run: yarn
       - run: yarn build
       - run: yarn test
+      - save_cache:
+          key: asset-prefix-public-cache-{{ epoch }}
+          paths:
+            - ~/project/e2e-tests/public
+
+  netlify-deploy:
+    executor: node
+    working_directory: ~/project
+
+    steps:
+      - run: yarn global add netlify-cli
+      - restore_cache:
+          key: asset-prefix-public-cache
+      - run: mv e2e-tests/public netlify-demo/external
+      - run: netlify deploy --prod --dir=netlify-demo --auth="$NETLIFY_ACCESS_TOKEN" --site="$NETLIFY_SITE_ID" --message "Deployed from Circle CI workflow https://circleci.com/workflow-run/$CIRCLE_WORKFLOW_ID"

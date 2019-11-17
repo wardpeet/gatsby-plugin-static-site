@@ -6,3 +6,5 @@
 /GatsbyStaticSitePlugin.js
 /node_modules/**/*
 /e2e-tests/**/plugins
+/netlify-demo
+.netlify
