@@ -1,0 +1,10 @@
+{
+  "extends": [
+    "config:base",
+    ":semanticCommitType(chore)",
+    ":combinePatchMinorReleases",
+    "group:allNonMajor",
+    "schedule:weekends"
+  ],
+  "rangeStrategy": "auto"
+}
