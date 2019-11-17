@@ -41,5 +41,8 @@
     "format:code": "npm run lint:code -- --fix",
     "format:prettier": "npm run prettier -- --write",
     "prettier": "prettier \"**/*.{md,css,yml,json}\""
+  },
+  "dependencies": {
+    "webpack": "^4.41.2"
   }
 }
