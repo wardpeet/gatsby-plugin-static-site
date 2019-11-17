@@ -2,7 +2,7 @@ const GatsbyStaticSitePlugin = require('./GatsbyStaticSitePlugin');
 
 exports.onCreateWebpackConfig = ({ actions }) => {
   // don't add plugin 
-  if (stage !== 'build-html') {
+  if (stage !== 'build-javascript') {
     return;
   }
 
