@@ -85,5 +85,6 @@ jobs:
     steps:
       - attach_workspace:
           at: ../../
+      - run: yarn
       - run: yarn build
       - run: yarn test
