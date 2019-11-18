@@ -1,7 +1,9 @@
 const path = require('path');
+const fs = require('fs');
 const execa = require('execa');
 const del = require('del');
 const globby = require('globby');
+const prettyBytes = require('pretty-bytes');
 const rootDir = path.resolve(__dirname, '..');
 const e2eRoot = path.join(rootDir, 'e2e-tests', 'asset-prefix');
 
@@ -9,9 +11,10 @@ const e2eRoot = path.join(rootDir, 'e2e-tests', 'asset-prefix');
   console.log('Packing plugin');
   await execa('yarn', ['pack'], { cwd: rootDir });
 
-  console.log(await globby('*.js', { cwd: rootDir }));
-
   const [localPackage] = await globby('*.tgz', { cwd: rootDir });
+  const size = fs.statSync(path.resolve(__dirname, `../${localPackage}`)).size;
+
+  console.log(`${localPackage}: ${prettyBytes(size)}`);
 
   console.log(`Add ${localPackage} to e2e-test`);
   const installPluginProc = execa(
