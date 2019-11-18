@@ -7,10 +7,28 @@ const isSilent = process.argv.includes('--silent');
 (async () => {
   const cwd = path.join(__dirname, '../e2e-tests/asset-prefix');
 
-  await execa('yarn', {
+  // install deps
+  const installProc = execa('yarn', {
     cwd,
-  }).stdout.pipe(isSilent ? writableNoopStream() : process.stdout);
-  await execa('yarn', ['test'], {
+  });
+  installProc.stdout.pipe(isSilent ? writableNoopStream() : process.stdout);
+  await installProc;
+
+  // Build site
+  const buildProc = execa('yarn', ['build'], {
     cwd,
-  }).stdout.pipe(isSilent ? writableNoopStream() : process.stdout);
+    env: {
+      CI: '1',
+    },
+  });
+  buildProc.stdout.pipe(isSilent ? writableNoopStream() : process.stdout);
+  await buildProc;
+
+  // // run e2e-tests
+  const testProc = execa('yarn', ['test'], {
+    cwd,
+  });
+  testProc.stdout.pipe(isSilent ? writableNoopStream() : process.stdout);
+
+  await testProc;
 })();

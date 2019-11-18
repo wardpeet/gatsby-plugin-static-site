@@ -1,30 +1,46 @@
 const path = require('path');
-const makeDir = require('make-dir');
-const cpy = require('cpy');
+const fs = require('fs');
+const execa = require('execa');
+const del = require('del');
 const globby = require('globby');
-const packageJSON = require('../package.json');
+const prettyBytes = require('pretty-bytes');
 const rootDir = path.resolve(__dirname, '..');
-const pluginDir = path.join(
-  rootDir,
-  'e2e-tests',
-  'asset-prefix',
-  'plugins',
-  packageJSON.name
-);
+const e2eRoot = path.join(rootDir, 'e2e-tests', 'asset-prefix');
 
 (async () => {
-  await makeDir(pluginDir);
+  console.log('Packing plugin');
+  await execa('yarn', ['pack'], { cwd: rootDir });
 
-  const files = await globby('**/*', {
-    cwd: path.join(rootDir, 'src'),
-  });
+  const [localPackage] = await globby('*.tgz', { cwd: rootDir });
+  const size = fs.statSync(path.resolve(__dirname, `../${localPackage}`)).size;
 
-  await cpy(['package.json'], pluginDir, {
-    cwd: rootDir,
-  });
+  console.log(`${localPackage}: ${prettyBytes(size)}`);
 
-  await cpy(files, pluginDir, {
-    cwd: path.join(rootDir, 'src'),
-    parents: true,
-  });
+  console.log(`Add ${localPackage} to e2e-test`);
+  const installPluginProc = execa(
+    'yarn',
+    ['add', `file:../../${localPackage}`],
+    {
+      cwd: e2eRoot,
+    }
+  );
+  installPluginProc.stdout.pipe(process.stdout);
+  await installPluginProc;
+
+  console.log(`Remove ${localPackage} artifact`);
+  await del(localPackage, { cwd: rootDir });
+
+  try {
+    console.log(`Restore yarn.lock & pacakge.json to original state`);
+    // run checkout files
+    await Promise.all(
+      ['package.json', 'yarn.lock'].map(file => {
+        return execa('git', ['checkout', file], {
+          cwd: e2eRoot,
+        });
+      })
+    );
+  } catch (err) {
+    // noop
+  }
 })();
