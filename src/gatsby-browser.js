@@ -3,8 +3,8 @@
 exports.onClientEntry = () => {
   const loader = window.___loader;
 
-  // if there is no loader we shouldn't do anything (gatsby doesn't expose loader on develop)
-  if (!loader) {
+  // if development or no loader exists we shouldn't do anything
+  if (process.env.NODE_ENV === 'development' || !loader) {
     return;
   }
 
