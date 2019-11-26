@@ -9,11 +9,22 @@ export default function PageList({ hidePage }) {
       continue;
     }
 
-    pages.push(
-      <Link to={i === 1 ? '/' : `/page-${i}`}>
-        Go back to {i === 1 ? 'the homepage' : `page ${i}`}
-      </Link>
-    );
+    let page;
+    switch (i) {
+      case 1: {
+        page = <Link to="/">Go back to the homepage</Link>;
+        break;
+      }
+      case 5: {
+        page = <Link to="/random-page">Random page</Link>;
+        break;
+      }
+      default: {
+        page = <Link to={`/page-${i}`}>Go back to {`page ${i}`}</Link>;
+      }
+    }
+
+    pages.push(page);
   }
 
   return (

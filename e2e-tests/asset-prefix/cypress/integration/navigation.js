@@ -28,4 +28,11 @@ describe('Navigation', function() {
 
     cy.get('[data-page]').should(`have.attr`, `data-page`, '1');
   });
+
+  it('A random rewritten url works in gatsby', () => {
+    cy.visit('http://localhost:3000/random-page');
+    cy.get('[data-page]').should(`have.attr`, `data-page`, 'random');
+
+    cy.get('#mytext').contains('hydrated');
+  });
 });

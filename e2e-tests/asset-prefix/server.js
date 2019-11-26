@@ -16,6 +16,11 @@ app
       req.path = '/external' + req.url;
     }
 
+    if (req.url === '/random-page') {
+      req.url = '/external/page-different-url';
+      req.path = '/external/page-different-url';
+    }
+
     next();
   })
   .use('/external', assets)
@@ -29,6 +34,7 @@ app
       <li style="margin-bottom: 0px;"><a href="/page-2">Go back to page 2</a></li>
       <li style="margin-bottom: 0px;"><a href="/page-3">Go back to page 3</a></li>
       <li style="margin-bottom: 0px;"><a href="/page-4">Go back to page 4</a></li>
+      <li style="margin-bottom: 0px;"><a href="/random-page">Go back to random-page</a></li>
     </ul>
     `);
   })
@@ -42,6 +48,7 @@ app
       <li style="margin-bottom: 0px;"><a href="/">Go back to the homepage</a></li>
       <li style="margin-bottom: 0px;"><a href="/page-3">Go back to page 3</a></li>
       <li style="margin-bottom: 0px;"><a href="/page-4">Go back to page 4</a></li>
+      <li style="margin-bottom: 0px;"><a href="/random-page">Go back to random-page</a></li>
     </ul>
     `);
   })

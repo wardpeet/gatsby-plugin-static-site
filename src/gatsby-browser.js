@@ -11,25 +11,44 @@ exports.onClientEntry = () => {
   const pagePath = window.pagePath;
   const location = window.location;
 
-  if (pagePath !== location.pathname && pagePath !== location.pathname + '/') {
+  if (
+    pagePath &&
+    pagePath !== location.pathname &&
+    pagePath !== location.pathname + '/'
+  ) {
     const originalLoadPageSync = loader.loadPageSync;
     const originalLoadPage = loader.loadPage;
 
     loader.loadPageSync = path => {
+      let pageResources;
       // if the path is the same as our current page we know it's not a prefetch
       if (path === location.pathname) {
-        return originalLoadPageSync(pagePath);
+        pageResources = originalLoadPageSync(pagePath);
+      } else {
+        pageResources = originalLoadPageSync(path);
       }
 
-      return originalLoadPageSync(path);
+      if (pageResources.page) {
+        pageResources.page.matchPath = '*';
+      }
+
+      return pageResources;
     };
+
     loader.loadPage = path => {
+      let pageResources;
       // if the path is the same as our current page we know it's not a prefetch
       if (path === location.pathname) {
-        return originalLoadPage(pagePath);
+        pageResources = originalLoadPage(pagePath);
+      } else {
+        pageResources = originalLoadPage(path);
       }
 
-      return originalLoadPage(path);
+      if (pageResources.page) {
+        pageResources.page.matchPath = '*';
+      }
+
+      return pageResources;
     };
   }
 
