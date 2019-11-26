@@ -4,7 +4,8 @@
     ":semanticCommitType(chore)",
     ":combinePatchMinorReleases",
     "group:allNonMajor",
-    "schedule:weekends"
+    "schedule:weekends",
+    ":pinOnlyDevDependencies"
   ],
-  "rangeStrategy": "auto"
+  "includePaths": ["package.json", "e2e-tests/**"]
 }
