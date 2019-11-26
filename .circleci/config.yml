@@ -67,7 +67,7 @@ jobs:
       - attach_workspace:
           at: ./
       # Build plugin
-      - run: yarn build
+      - run: yarn lint
 
   build:
     executor: node
