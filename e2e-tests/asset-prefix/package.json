@@ -23,9 +23,9 @@
     "sirv": "^0.4.2"
   },
   "devDependencies": {
-    "cross-env": "7.0.0",
-    "gatsby-cypress": "0.2.22",
-    "start-server-and-test": "1.10.8"
+    "cross-env": "7.0.2",
+    "gatsby-cypress": "0.2.23",
+    "start-server-and-test": "1.10.9"
   },
   "keywords": [
     "gatsby"
