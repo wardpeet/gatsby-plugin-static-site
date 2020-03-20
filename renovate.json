@@ -7,8 +7,5 @@
     "schedule:weekends",
     ":pinOnlyDevDependencies"
   ],
-  "includePaths": [
-    "package.json",
-    "e2e-tests/asset-prefix/package.json"
-  ]
+  "includePaths": ["package.json", "e2e-tests/asset-prefix/package.json"]
 }
