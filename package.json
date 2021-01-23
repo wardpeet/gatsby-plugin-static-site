@@ -64,6 +64,6 @@
     "test": "yarn lint && node scripts/e2e-test.js --silent"
   },
   "dependencies": {
-    "webpack": "^4.42.0"
+    "webpack": "^5.0.0"
   }
 }
