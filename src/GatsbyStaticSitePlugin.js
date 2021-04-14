@@ -18,7 +18,7 @@ module.exports = class GatsbyStaticSitePlugin {
             parser.hooks.importSpecifier.tap(
               pluginName,
               (statement, source, id, name) => {
-                if (source === '@reach/router' && id === 'navigate') {
+                if (source === '@gatsbyjs/reach-router' && id === 'navigate') {
                   // remove navigate from import
                   parser.scope.definitions.delete(name);
 
