@@ -7,14 +7,14 @@
   "dependencies": {
     "cypress": "^6.0.0",
     "express": "^4.17.1",
-    "gatsby": "^2.19.49",
-    "gatsby-image": "^2.2.45",
-    "gatsby-plugin-manifest": "^2.2.48",
-    "gatsby-plugin-offline": "^3.0.42",
-    "gatsby-plugin-react-helmet": "^3.1.24",
-    "gatsby-plugin-sharp": "^2.4.13",
-    "gatsby-source-filesystem": "^2.1.57",
-    "gatsby-transformer-sharp": "^2.3.19",
+    "gatsby": "^3.0.0",
+    "gatsby-image": "^3.0.0",
+    "gatsby-plugin-manifest": "^3.0.0",
+    "gatsby-plugin-offline": "^4.0.0",
+    "gatsby-plugin-react-helmet": "^4.0.0",
+    "gatsby-plugin-sharp": "^3.0.0",
+    "gatsby-source-filesystem": "^3.0.0",
+    "gatsby-transformer-sharp": "^3.0.0",
     "polka": "^0.5.2",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
@@ -24,7 +24,7 @@
   },
   "devDependencies": {
     "cross-env": "7.0.2",
-    "gatsby-cypress": "0.2.24",
+    "gatsby-cypress": "1.3.0",
     "start-server-and-test": "1.10.11"
   },
   "keywords": [
