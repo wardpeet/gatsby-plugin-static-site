@@ -5,14 +5,14 @@ executors:
     parameters:
       image:
         type: string
-        default: '10'
+        default: '14'
     docker:
       - image: circleci/node:<< parameters.image >>
 
 aliases:
   e2e-executor: &e2e-executor
     docker:
-      - image: cypress/browsers:node10.16.0-chrome76
+      - image: cypress/browsers:node14.16.0-chrome89-ff86
 
   restore_cache: &restore_cache
     restore_cache:
