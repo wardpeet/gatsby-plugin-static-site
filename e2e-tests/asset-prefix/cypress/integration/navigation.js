@@ -1,9 +1,11 @@
-describe('Navigation', function () {
+describe('Navigation', function() {
   it('From non gatsby to gatsby site works', () => {
     cy.visit('http://localhost:3000/');
     cy.get('[data-page]').should(`have.attr`, `data-page`, '1');
 
-    cy.get('#list-of-pages').find('li:eq(1) a').click();
+    cy.get('#list-of-pages')
+      .find('li:eq(1) a')
+      .click();
 
     cy.location('pathname').should('include', '/page-3');
     cy.get('[data-page]').should(`have.attr`, `data-page`, '3');
@@ -18,7 +20,9 @@ describe('Navigation', function () {
       .find('> img')
       .should('have.css', 'opacity', '0');
 
-    cy.get('#list-of-pages').find('li:eq(0) a').click();
+    cy.get('#list-of-pages')
+      .find('li:eq(0) a')
+      .click();
 
     cy.location(`pathname`).should(`equal`, `/`);
 
