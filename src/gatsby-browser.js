@@ -21,11 +21,14 @@ exports.onClientEntry = () => {
 
     loader.loadPageSync = path => {
       let pageResources;
-      // if the path is the same as our current page we know it's not a prefetch
-      if (path === location.pathname) {
+      // With Gatsby V4, path has been appended with window.location.search when invoking loadPageSync
+      const pathWithoutQueryParams = path.replace(location.search, '');
+
+      // if the pathWithoutQueryParams is the same as our current page we know it's not a prefetch
+      if (pathWithoutQueryParams === location.pathname) {
         pageResources = originalLoadPageSync(pagePath);
       } else {
-        pageResources = originalLoadPageSync(path);
+        pageResources = originalLoadPageSync(pathWithoutQueryParams);
       }
 
       if (pageResources.page) {
@@ -37,11 +40,14 @@ exports.onClientEntry = () => {
 
     loader.loadPage = path => {
       let pageResources;
-      // if the path is the same as our current page we know it's not a prefetch
-      if (path === location.pathname) {
+      // With Gatsby V4, path has been appended with window.location.search when invoking loadPage
+      const pathWithoutQueryParams = path.replace(location.search, '');
+
+      // if the pathWithoutQueryParams is the same as our current page we know it's not a prefetch
+      if (pathWithoutQueryParams === location.pathname) {
         pageResources = originalLoadPage(pagePath);
       } else {
-        pageResources = originalLoadPage(path);
+        pageResources = originalLoadPage(pathWithoutQueryParams);
       }
 
       if (pageResources.page) {
