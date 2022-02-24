@@ -1,6 +1,6 @@
 {
   "name": "@wardpeet/gatsby-plugin-static-site",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "A plugin that disables client side routing for gatsby",
   "main": "index.js",
   "author": "Ward Peeters <ward@coding-tech.com>",
@@ -17,7 +17,7 @@
   },
   "license": "MIT",
   "peerDependencies": {
-    "gatsby": "^3.0.0"
+    "gatsby": "^3.0.0 || ^4.0.0"
   },
   "files": [
     "gatsby-browser.js",
