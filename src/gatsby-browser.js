@@ -11,6 +11,15 @@ exports.onClientEntry = () => {
   const pagePath = window.pagePath;
   const location = window.location;
 
+  const parsePathComponents = pathAndQuery => {
+    const queryIndex = pathAndQuery.indexOf('?');
+    const path =
+      queryIndex > -1 ? pathAndQuery.substr(0, queryIndex) : pathAndQuery;
+    const query = queryIndex > -1 ? pathAndQuery.substr(queryIndex) : '';
+
+    return { path, query };
+  };
+
   if (
     pagePath &&
     pagePath !== location.pathname &&
@@ -20,10 +29,16 @@ exports.onClientEntry = () => {
     const originalLoadPage = loader.loadPage;
 
     loader.loadPageSync = path => {
+      // with Gatsby v4, 'path' can now be a path component, or path component + query
+      const {
+        path: pathComponent,
+        query: queryComponent,
+      } = parsePathComponents(path);
+
       let pageResources;
       // if the path is the same as our current page we know it's not a prefetch
-      if (path === location.pathname) {
-        pageResources = originalLoadPageSync(pagePath);
+      if (pathComponent === location.pathname) {
+        pageResources = originalLoadPageSync(pagePath + queryComponent);
       } else {
         pageResources = originalLoadPageSync(path);
       }
@@ -36,10 +51,16 @@ exports.onClientEntry = () => {
     };
 
     loader.loadPage = path => {
+      // with Gatsby v4, 'path' can now be a path component, or path component + query
+      const {
+        path: pathComponent,
+        query: queryComponent,
+      } = parsePathComponents(path);
+
       let pageResources;
       // if the path is the same as our current page we know it's not a prefetch
-      if (path === location.pathname) {
-        pageResources = originalLoadPage(pagePath);
+      if (pathComponent === location.pathname) {
+        pageResources = originalLoadPage(pagePath + queryComponent);
       } else {
         pageResources = originalLoadPage(path);
       }
