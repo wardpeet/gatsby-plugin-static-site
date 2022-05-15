@@ -4046,12 +4046,10 @@ node-releases@^1.1.71:
   resolved "https://registry.yarnpkg.com/node-releases/-/node-releases-1.1.71.tgz#cb1334b179896b1c89ecfdd4b725fb7bbdfc7dbb"
   integrity sha512-zR6HoT6LrLCRBwukmrVbHv0EpEQjksO6GmFcZQQuCAy139BEsoVKPYnf3jongYW83fAa1torLGYwxxky/p28sg==
 
-noop-stream@0.1.0:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/noop-stream/-/noop-stream-0.1.0.tgz#097b67a7d4d6598899b3e69f6ccf9623e203b235"
-  integrity sha512-GyQPM8zEoN9LADidd/DHLbIE8lOyNz+LrNyT9YQjGGu7KGPEvx9PvgRlWhXhvqcBAVKf/SI6k+RzNSy/QUmvZQ==
-  dependencies:
-    type-fest "^0.5.2"
+noop-stream@1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/noop-stream/-/noop-stream-1.0.0.tgz#10bfb81cebeeebb608b9facee3476236fe95cde6"
+  integrity sha512-EHpIatM09Pg7dZOsowDwqqdacYpogTBb1BNSMIy8g/J+MGpaxy0k+qmrbYrjLNRPXtW3fqf+Q3b2Q0yFRnQdIw==
 
 normalize-package-data@^2.3.2, normalize-package-data@^2.5.0:
   version "2.5.0"
@@ -5542,11 +5540,6 @@ type-fest@^0.4.1:
   version "0.4.1"
   resolved "https://registry.yarnpkg.com/type-fest/-/type-fest-0.4.1.tgz#8bdf77743385d8a4f13ba95f610f5ccd68c728f8"
   integrity sha512-IwzA/LSfD2vC1/YDYMv/zHP4rDF1usCwllsDpbolT3D4fUepIO7f9K70jjmUewU/LmGUKJcwcVtDCpnKk4BPMw==
-
-type-fest@^0.5.2:
-  version "0.5.2"
-  resolved "https://registry.yarnpkg.com/type-fest/-/type-fest-0.5.2.tgz#d6ef42a0356c6cd45f49485c3b6281fc148e48a2"
-  integrity sha512-DWkS49EQKVX//Tbupb9TFa19c7+MK1XmzkrZUR8TAktmE/DizXoaoJV6TZ/tSIPXipqNiRI6CyAe7x69Jb6RSw==
 
 type-fest@^0.6.0:
   version "0.6.0"
