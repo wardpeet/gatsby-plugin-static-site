@@ -35,7 +35,7 @@
     "cpy": "8.1.2",
     "cross-env": "7.0.3",
     "del": "6.0.0",
-    "eslint": "7.26.0",
+    "eslint": "9.13.0",
     "eslint-config-prettier": "8.3.0",
     "eslint-plugin-cypress": "2.11.3",
     "eslint-plugin-prettier": "3.4.0",
