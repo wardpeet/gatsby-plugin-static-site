@@ -29,8 +29,8 @@
     "access": "public"
   },
   "devDependencies": {
-    "@babel/cli": "7.13.16",
-    "@babel/core": "7.14.0",
+    "@babel/cli": "8.0.5",
+    "@babel/core": "8.0.5",
     "babel-preset-gatsby-package": "1.4.0",
     "cpy": "8.1.2",
     "cross-env": "7.0.3",
